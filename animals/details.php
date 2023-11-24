@@ -1,6 +1,18 @@
 <?php
 require_once "../components/db_connect.php";
 require_once "../components/navbar.php";
+
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+  $sql = "SELECT * FROM `animals` WHERE `id`= $_GET[id]";
+
+  $result = mysqli_query($conn, $sql);
+
+
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,19 +30,19 @@ require_once "../components/navbar.php";
   <?= $navbar ?>
 
   <div class="container my-5">
-    <h1 class="text-center my-4">Name</h1>
+    <h1 class="text-center my-4"><?= $row['name'] ?></h1>
     <div class="d-flex mb-4">
       <img class="w-50 rounded shadow-sm object-fit-cover me-4" src="https://images.unsplash.com/photo-1433162653888-a571db5ccccf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
       <div class="border-start ps-4">
-        <p>age</p>
-        <p>size</p>
-        <p>breed</p>
-        <p>vaccinated</p>
-        <p>location</p>
-        <p>status</p>
+        <p><strong>Age: </strong><?= $row['age'] ?> year(s)</p>
+        <p><strong>Size: </strong><?= $row['size'] ?></p>
+        <p><strong>Breed: </strong> <?= $row['breed'] ?></p>
+        <p><strong>Vaccinated: </strong><?= $row['vaccinated'] ?></p>
+        <p><strong>Location: </strong><?= $row['location'] ?></p>
+        <p><strong>Status: </strong><?= $row['status'] ?></p>
       </div>
     </div>
-    <a href='#' class='btn btn-outline-dark'>Take me home</a>
+    <a href='#' class='btn btn-outline-dark <?= $row['status'] == "Adopted" ? "disabled" : "" ?>'>Take me home</a>
 
 
   </div>

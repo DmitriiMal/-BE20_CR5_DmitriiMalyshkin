@@ -73,7 +73,7 @@ require_once "../components/navbar.php";
         <input type="file" class="form-control" id="picture" name="picture" placeholder="picture">
         <label for="picture">Picture</label>
       </div>
-      <button type="submit" class="btn btn-dark px-5">Add</button>
+      <button type="add" class="btn btn-dark px-5">Add</button>
     </form>
 
   </div>

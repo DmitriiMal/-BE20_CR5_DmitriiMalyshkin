@@ -2,7 +2,7 @@
 require_once "components/db_connect.php";
 require_once "components/navbar.php";
 
-$sql = "SELECT * FROM `animals` WHERE 1";
+$sql = "SELECT * FROM `animals` WHERE `age` >= 8";
 $result = mysqli_query($conn, $sql);
 
 $cards = "";
@@ -48,7 +48,7 @@ if (mysqli_num_rows($result) > 0) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/553d5d3b41.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style/style.css">
-  <title>Home</title>
+  <title>seniors</title>
 </head>
 
 <body>
@@ -57,8 +57,8 @@ if (mysqli_num_rows($result) > 0) {
   <div class="container my-5">
 
     <div class='btn-group btn-group-sm' role='group' aria-label='Basic mixed styles example'>
-      <a href='home.php' class='btn btn-secondary'>All animals</a>
-      <a href='seniors.php' class='btn btn-outline-secondary'>Seniors only</a>
+      <a href='home.php' class='btn btn-outline-secondary'>All animals</a>
+      <a href='seniors.php' class='btn btn-secondary'>Seniors only</a>
     </div>
 
     <div class="row row-cols-xs-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">

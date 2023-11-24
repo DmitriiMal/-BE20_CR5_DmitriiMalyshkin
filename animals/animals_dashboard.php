@@ -1,6 +1,39 @@
 <?php
 require_once "../components/db_connect.php";
 require_once "../components/navbar.php";
+
+$sql = "SELECT * FROM `animals` WHERE 1";
+$result = mysqli_query($conn, $sql);
+
+$rows = "";
+
+if (mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $rows .= "
+    <tr>
+    <th scope='row'>$row[id]</th>
+    <td><img class='rounded asp-1 shadow-sm' src='../pictures/$row[picture]' alt='' width='45px'></td>
+    <td>$row[name]</td>
+    <td>$row[age]</td>
+    <td>$row[size]</td>
+    <td>$row[breed]</td>
+    <td>$row[vaccinated]</td>
+    <td>$row[location]</td>
+    <td>$row[status]</td>
+    <td>
+      <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
+        <a href='details.php?id=$row[id]' class='btn btn-dark'>Details</a>
+        <a href='update.php?id=$row[id]' class='btn btn-outline-dark'>Edit</a>
+      </div>
+      <a href='#' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
+    </td>
+  </tr>
+    ";
+  }
+} else {
+  $rows = "No data found.";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,24 +70,7 @@ require_once "../components/navbar.php";
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td><img class="rounded asp-1 shadow-sm" src='https://images.unsplash.com/photo-1433162653888-a571db5ccccf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='' width='45px'></td>
-            <td>Name</td>
-            <td>Age</td>
-            <td>Size</td>
-            <td>Breed</td>
-            <td>Vaccinated</td>
-            <td>Location</td>
-            <td>Status</td>
-            <td>
-              <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
-                <a href='details.php' class='btn btn-dark'>Details</a>
-                <a href='#' class='btn btn-outline-dark'>Edit</a>
-              </div>
-              <a href='#' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
-            </td>
-          </tr>
+          <?= $rows ?>
         </tbody>
       </table>
     </div>

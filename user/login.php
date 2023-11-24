@@ -1,6 +1,9 @@
 <?php
 require_once "../components/db_connect.php";
 require_once "../components/navbar.php";
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +44,19 @@ require_once "../components/navbar.php";
         <button type="submit" class="btn btn-dark">Submit</button>
         <small class="text-secondary ms-4">Not registered yet? <a class="link-dark" href="register.php">Create your account here</a></small>
     </form>
+
+    <div class="d-md-flex  justify-content-around my-5 pt-5">
+      <div>
+        <h6 class="text fw-lighter">Admin</h6>
+        <p class="text fw-lighter mb-1">login: admin@admin.com</p>
+        <p class="text fw-lighter">password: admin</p>
+      </div>
+      <div>
+        <h6 class="text fw-lighter">User</h6>
+        <p class="text fw-lighter mb-1">login: user@user.com</p>
+        <p class="text fw-lighter">password: user</p>
+      </div>
+    </div>
 
   </div>
 

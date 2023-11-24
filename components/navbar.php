@@ -2,9 +2,9 @@
 
 <?php
 $navbar = "
-<nav class='navbar navbar-expand-sm bg-body-tertiary shadow-lg'>
+<nav class='navbar navbar-expand-sm bg-body-tertiary shadow opacity-75'>
   <div class='container-fluid'>
-    <a class='navbar-brand' href='/BE20_CR5_DmitriiMalyshkin/home.php'>Home</a>
+    <a class='navbar-brand' href='/BE20_CR5_DmitriiMalyshkin/home.php'><i class='fa-solid fa-paw fa-xl me-2'></i>Home</a>
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
       <span class='navbar-toggler-icon'></span>
     </button>
@@ -14,19 +14,16 @@ $navbar = "
           <a class='nav-link' aria-current='page' href='/BE20_CR5_DmitriiMalyshkin/animals/animals_dashboard.php'>Animals</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/animals/create.php'>Create</a>
+        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/animals/create.php'>Add</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/PHP-Day-8/user/update.php'>Update</a>
+        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/user/logout.php'>Logout</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/PHP-Day-8/user/logout.php'>Logout</a>
+        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/user/login.php'>Login</a>
         </li>
         <li class='nav-item'>
-        <a class='nav-link' href='/PHP-Day-8/user/login.php'>Login</a>
-        </li>
-        <li class='nav-item'>
-        <a class='nav-link' href='/PHP-Day-8/user/register.php'>Register</a>
+        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/user/register.php'>Register</a>
         </li>
         </ul>
         
@@ -38,4 +35,7 @@ $navbar = "
         
         // <li class='nav-item'>
         //   <a class='nav-link' href='/PHP-Day-8/user/user_dashboard.php'>Users</a>
+        // </li>
+        // <li class='nav-item'>
+        // <a class='nav-link' href='/PHP-Day-8/user/update.php'>Update</a>
         // </li>

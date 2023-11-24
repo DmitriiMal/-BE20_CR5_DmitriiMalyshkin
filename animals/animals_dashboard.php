@@ -12,7 +12,7 @@ if (mysqli_num_rows($result) > 0) {
     $rows .= "
     <tr>
     <th scope='row'>$row[id]</th>
-    <td><img class='rounded asp-1 object-fit-cover shadow-sm' src='../pictures/$row[picture]' alt='' width='45px'></td>
+    <td><img class='rounded img-thumbnail asp-1 object-fit-cover shadow-sm' src='../pictures/$row[picture]' alt='' width='60px'></td>
     <td>$row[name]</td>
     <td>$row[age]</td>
     <td>$row[size]</td>
@@ -20,13 +20,15 @@ if (mysqli_num_rows($result) > 0) {
     <td>$row[vaccinated]</td>
     <td>$row[location]</td>
     <td>$row[status]</td>
-    <td class='d-flex flex-nowrap'>
+    <td class=''>
 
-        <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
-          <a href='details.php?id=$row[id]' class='btn btn-dark'>Details</a>
-          <a href='update.php?id=$row[id]' class='btn btn-outline-dark'>Edit</a>
+        <div class='d-flex flex-nowrap'>
+          <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
+            <a href='details.php?id=$row[id]' class='btn btn-dark'>Details</a>
+            <a href='update.php?id=$row[id]' class='btn btn-outline-dark'>Edit</a>
+          </div>
+          <a href='delete.php?id=$row[id]' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
         </div>
-        <a href='#' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
 
     </td>
   </tr>

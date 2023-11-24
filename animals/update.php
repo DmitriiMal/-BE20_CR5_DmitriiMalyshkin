@@ -33,16 +33,22 @@ if (isset($_POST['edit'])) {
 
   if (mysqli_query($conn, $sql)) {
     echo "
-            <div class='alert alert-success mt-5' role='alert'>
-                Animal has been edited! <i class='fa-solid fa-crow'></i>
-            </div>";
+    <div class='alert alert-success mt-5' role='alert'>
+    Animal has been edited! <i class='fa-solid fa-crow'></i>
+    </div>";
   } else {
     echo "
-            <div class='alert alert-danger mt-5' role='alert'>
-                Something went wrong! <i class='fa-solid fa-bugs'></i>
-            </div>";
+    <div class='alert alert-danger mt-5' role='alert'>
+    Something went wrong! <i class='fa-solid fa-bugs'></i>
+    </div>";
   }
 }
+
+
+// Refresh info
+$sql = "SELECT * FROM `animals` WHERE `id` = $id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
 
 
@@ -64,7 +70,7 @@ if (isset($_POST['edit'])) {
   <?= $navbar ?>
 
   <div class="container my-5 pt-5">
-    <img src="../pictures/<?= $row['picture'] ?>" class="d-block mx-auto rounded-circle asp-1 object-fit-cover shadow-sm m-auto" width='100px' alt="">
+    <img src="../pictures/<?= $row['picture'] ?>" class="d-block mx-auto rounded-circle img-thumbnail asp-1 object-fit-cover shadow-sm m-auto" width='100px' alt="">
     <h1 class="text-center my-4">Edit information about <?= $row['name'] ?? "" ?></h1>
     <form method="POST" enctype="multipart/form-data">
 

@@ -54,7 +54,7 @@ if (mysqli_num_rows($result) > 0) {
 <body>
   <?= $navbar ?>
 
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
 
     <div class='btn-group btn-group-sm' role='group' aria-label='Basic mixed styles example'>
       <a href='home.php' class='btn btn-outline-secondary'>All animals</a>

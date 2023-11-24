@@ -1,6 +1,34 @@
 <?php
 require_once "../components/db_connect.php";
+require_once "../components/file_upload.php";
 require_once "../components/navbar.php";
+
+if (isset($_POST['add'])) {
+  $name = $_POST['name'];
+  $age = $_POST['age'];
+  $size = $_POST['size'];
+  $breed = $_POST['breed'];
+  $vaccinated = $_POST['vaccinated'];
+  $location = $_POST['location'];
+  $status = $_POST['status'];
+  $picture = fileUpload($_FILES['picture'], 'animal');
+
+  $sql = "INSERT INTO `animals`(`name`, `age`, `size`, `breed`, `vaccinated`, `location`, `status`, `picture`) VALUES ('$name', $age,'$size','$breed','$vaccinated','$location','$status','$picture[0]')";
+  if (mysqli_query($conn, $sql)) {
+    echo "
+            <div class='alert alert-success' role='alert'>
+                New animal added! <i class='fa-solid fa-otter'></i>
+            </div>";
+  } else {
+    echo "
+            <div class='alert alert-danger' role='alert'>
+                Something went wrong! <i class='fa-solid fa-bugs'></i>
+            </div>";
+  }
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +101,8 @@ require_once "../components/navbar.php";
         <input type="file" class="form-control" id="picture" name="picture" placeholder="picture">
         <label for="picture">Picture</label>
       </div>
-      <button type="add" class="btn btn-dark px-5">Add</button>
+      <button type="add" name="add" class="btn btn-dark px-5">Add</button>
+      <input type="submit" value="Create" name="add" class="btn btn-dark px-5">
     </form>
 
   </div>

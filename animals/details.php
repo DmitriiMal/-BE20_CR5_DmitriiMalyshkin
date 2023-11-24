@@ -29,7 +29,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <body>
   <?= $navbar ?>
 
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
     <h1 class="text-center my-4"><?= $row['name'] ?></h1>
     <div class="d-flex mb-4">
       <img class="w-50 rounded shadow-sm object-fit-cover me-4" src="https://images.unsplash.com/photo-1433162653888-a571db5ccccf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">

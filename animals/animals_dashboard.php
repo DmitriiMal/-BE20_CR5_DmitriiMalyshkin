@@ -12,7 +12,7 @@ if (mysqli_num_rows($result) > 0) {
     $rows .= "
     <tr>
     <th scope='row'>$row[id]</th>
-    <td><img class='rounded asp-1 shadow-sm' src='../pictures/$row[picture]' alt='' width='45px'></td>
+    <td><img class='rounded asp-1 object-fit-cover shadow-sm' src='../pictures/$row[picture]' alt='' width='45px'></td>
     <td>$row[name]</td>
     <td>$row[age]</td>
     <td>$row[size]</td>
@@ -50,7 +50,7 @@ if (mysqli_num_rows($result) > 0) {
 <body>
   <?= $navbar ?>
 
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
     <h1 class="text-center my-4">Animals Dashboard</h1>
 
     <div class="table-responsive">

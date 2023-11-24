@@ -16,12 +16,12 @@ if (isset($_POST['add'])) {
   $sql = "INSERT INTO `animals`(`name`, `age`, `size`, `breed`, `vaccinated`, `location`, `status`, `picture`) VALUES ('$name', $age,'$size','$breed','$vaccinated','$location','$status','$picture[0]')";
   if (mysqli_query($conn, $sql)) {
     echo "
-            <div class='alert alert-success' role='alert'>
+            <div class='alert alert-success mt-5' role='alert'>
                 New animal added! <i class='fa-solid fa-otter'></i>
             </div>";
   } else {
     echo "
-            <div class='alert alert-danger' role='alert'>
+            <div class='alert alert-danger mt-5' role='alert'>
                 Something went wrong! <i class='fa-solid fa-bugs'></i>
             </div>";
   }
@@ -46,7 +46,7 @@ if (isset($_POST['add'])) {
 <body>
   <?= $navbar ?>
 
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
     <h1 class="text-center my-4">Add an animal</h1>
     <form method="POST" enctype="multipart/form-data">
 
@@ -90,11 +90,11 @@ if (isset($_POST['add'])) {
 
       <div class="form-floating mb-3">
         <select class="form-select" id="status" name="status" aria-label="Floating label select example">
-          <option selected value="adopted">choose...</option>
-          <option value="available">Available</option>
-          <option value="adopted">Adopted</option>
+          <option selected value="Adopted">choose...</option>
+          <option value="Available">Available</option>
+          <option value="Adopted">Adopted</option>
         </select>
-        <label for="status">Availability</label>
+        <label for="status">Status</label>
       </div>
 
       <div class="form-floating mb-3">
@@ -102,7 +102,6 @@ if (isset($_POST['add'])) {
         <label for="picture">Picture</label>
       </div>
       <button type="add" name="add" class="btn btn-dark px-5">Add</button>
-      <input type="submit" value="Create" name="add" class="btn btn-dark px-5">
     </form>
 
   </div>

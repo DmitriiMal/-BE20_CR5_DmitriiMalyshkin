@@ -5,6 +5,24 @@ session_start();
 require_once "components/db_connect.php";
 require_once "components/navbar.php";
 
+if (isset($_SESSION["user"]) && isset($_POST['adopt'])) {
+  $date = date("Y-m-d");
+  $sqlAdopt = "INSERT INTO `pet_adoption`(`fk_user`, `fk_animal`, `adopt_date`) VALUES ($_SESSION[user], $_POST[anim],'$date')";
+  $sqlAnim = "UPDATE `animals` SET `status`='Adopted' WHERE `id` = $_POST[anim]";
+
+  if (mysqli_query($conn, $sqlAdopt) && mysqli_query($conn, $sqlAnim)) {
+    echo "
+            <div class='alert alert-success mt-5' role='alert'>
+            Congratulate! Thank you for your interest, we will contact you! <i class='fa-solid fa-hippo'></i>
+            </div>";
+  } else {
+    echo "
+            <div class='alert alert-danger mt-5' role='alert'>
+                Something went wrong! <i class='fa-solid fa-bugs'></i>
+            </div>";
+  }
+}
+
 $sql = "SELECT * FROM `animals` WHERE 1";
 $result = mysqli_query($conn, $sql);
 
@@ -24,14 +42,20 @@ if (mysqli_num_rows($result) > 0) {
           </div>
 
           <div class='card-body pt-1'>
-            <div class='btn-group btn-group-sm' role='group' aria-label='Basic mixed styles example'>
-              <a href='animals/details.php?id=$row[id]' class='btn btn-dark'>Details</a>
-              <a href='#' class='btn btn-outline-dark ";
+                <div class='d-flex no-wrap'>
+                  <div>
+                       <a href='animals/details.php?id=$row[id]' class='btn btn-dark btn-sm me-3'>Details</a>
+                  </div>
+                     <form action='' method='post'>
+                     <input type='hidden' name='anim' value='$row[id]'>
+
+                        <input ";
     if ($row["status"] == "Adopted" || !isset($_SESSION["user"])) {
       $cards .= "disabled";
     };
-    $cards .= "'>Take me home</a>
-            </div>
+    $cards .= " type='submit' name='adopt' value='Take me home' class='btn btn-outline-dark btn-sm'>
+                     </form>
+                </div>
           </div>
         </div>
       </div>
@@ -41,7 +65,9 @@ if (mysqli_num_rows($result) > 0) {
   $cards = "No data found.";
 }
 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

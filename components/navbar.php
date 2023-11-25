@@ -6,7 +6,7 @@ session_start();
 
 
 $navbar = "
-<nav class='navbar navbar-expand-sm bg-body-tertiary fixed-top shadow opacity-100' style='height: 4rem;'>
+<nav class='navbar navbar-expand-sm bg-body-tertiary fixed-top shadow opacity-75' style='height: 4rem;'>
   <div class='container-fluid'>
     <a class='navbar-brand' href='/BE20_CR5_DmitriiMalyshkin/home.php'><i class='fa-solid fa-paw fa-xl me-2'></i>Home</a>
     <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>

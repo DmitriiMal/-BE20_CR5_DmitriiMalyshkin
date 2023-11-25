@@ -27,15 +27,16 @@ if (isset($_POST['edit'])) {
   $location = $_POST['location'];
   $status = $_POST['status'];
   $picture = fileUpload($_FILES['picture'], 'animal');
+  $description = $_POST['description'];
 
 
   if ($_FILES["picture"]["error"] == 0) {
     if ($row["picture"] !== "animal.png") {
       unlink("../pictures/$row[picture]");
     }
-    $sql = "UPDATE `animals` SET `name`='$name',`age`= $age,`size`='$size',`breed`='$breed',`vaccinated`='$vaccinated',`location`='$location',`status`='$status',`picture`='$picture[0]' WHERE id = $id";
+    $sql = "UPDATE `animals` SET `name`='$name',`age`= $age,`size`='$size',`breed`='$breed',`vaccinated`='$vaccinated',`location`='$location',`status`='$status',`picture`='$picture[0], `description`='$description' WHERE id = $id";
   } else {
-    $sql = "UPDATE `animals` SET `name`='$name',`age`= $age,`size`='$size',`breed`='$breed',`vaccinated`='$vaccinated',`location`='$location',`status`='$status' WHERE id = $id";
+    $sql = "UPDATE `animals` SET `name`='$name',`age`= $age,`size`='$size',`breed`='$breed',`vaccinated`='$vaccinated',`location`='$location',`status`='$status',`description`='$description' WHERE id = $id";
   }
 
 
@@ -131,6 +132,12 @@ $row = mysqli_fetch_assoc($result);
         <input type="file" class="form-control" id="picture" name="picture" placeholder="picture">
         <label for="picture">Picture</label>
       </div>
+
+      <div class="form-floating mb-3">
+        <textarea class="form-control" name="description" placeholder="Description" id="description"></textarea>
+        <label for="description">Description</label>
+      </div>
+
       <button name="edit" class="btn btn-dark px-5">Edit</button>
     </form>
 

@@ -134,7 +134,7 @@ $row = mysqli_fetch_assoc($result);
       </div>
 
       <div class="form-floating mb-3">
-        <textarea class="form-control" name="description" placeholder="Description" id="description"></textarea>
+        <textarea class="form-control" name="description" placeholder="Description" id="description"><?= $row['description'] ?? "" ?></textarea>
         <label for="description">Description</label>
       </div>
 

@@ -1,9 +1,52 @@
 <?php
 require_once "../components/db_connect.php";
 require_once "../components/navbar.php";
+require_once "../components/clean.php";
 
+$emailError = "";
+$passError = "";
+$error = false;
 
+if (isset($_POST["login"])) {
+  $email = clean($_POST["email"]);
+  $pass = clean($_POST["pass"]);
 
+  if (empty($email)) {
+    $error = true;
+    $emailError = "Please, enter your email";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $error = true;
+    $emailError = "Please enter a valid email address";
+  }
+
+  if (empty($pass)) {
+    $error = true;
+    $passError = "Please, enter your password";
+  }
+
+  if (!$error) {
+    $pass = hash("sha256", $pass);
+
+    $sql = "SELECT * FROM `users` WHERE email = '$email' AND pass = '$pass'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) === 1) {
+      $row = mysqli_fetch_assoc($result);
+      if ($row["status"] === "user") {
+        $_SESSION["user"] = $row["id"];
+        header("Location: ../home.php");
+      } elseif ($row["status"] === "adm") {
+        $_SESSION["adm"] = $row["id"];
+        header("Location: ../animals/animals_dashboard.php");
+      }
+    } else {
+      echo "
+            <div class='alert alert-danger mt-5' role='alert'>
+            Incorrect email or password! <i class='fa-solid fa-bugs'></i>
+            </div>";
+    }
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,19 +63,21 @@ require_once "../components/navbar.php";
 <body>
   <?= $navbar ?>
 
-  <div class="container my-5">
+  <div class="container my-5 pt-5">
     <h1 class="text-center my-4">Login</h1>
-    <form>
+    <form action="" method="post">
       <div class="mb-3">
 
 
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" value="admin@admin.com" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" value="admin@admin.com" placeholder="name@example.com">
+          <!-- <label for="email">Email address</label> -->
+          <?= $emailError == "" ?  "<label for='email'>Email address</label>" : "<label class='text-danger' for='email'>$emailError</label>" ?>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" value="admin" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" id="pass" name="pass" value="123123" placeholder="Password">
+          <!-- <label for="pass">Password</label> -->
+          <?= $passError == "" ?  "<label for='pass'>Password</label>" : "<label class='text-danger' for='pass'>$passError</label>" ?>
         </div>
 
         <small class="d-block mb-4">
@@ -41,7 +86,8 @@ require_once "../components/navbar.php";
           </a>
         </small>
 
-        <button type="submit" class="btn btn-dark">Submit</button>
+        <input type="submit" value="Login" name="login" class="btn btn-dark">
+
         <small class="text-secondary ms-4">Not registered yet? <a class="link-dark" href="register.php">Create your account here</a></small>
     </form>
 
@@ -49,12 +95,12 @@ require_once "../components/navbar.php";
       <div>
         <h6 class="text fw-lighter">Admin</h6>
         <p class="text fw-lighter mb-1">login: admin@admin.com</p>
-        <p class="text fw-lighter">password: admin</p>
+        <p class="text fw-lighter">password: 123123</p>
       </div>
       <div>
         <h6 class="text fw-lighter">User</h6>
         <p class="text fw-lighter mb-1">login: user@user.com</p>
-        <p class="text fw-lighter">password: user</p>
+        <p class="text fw-lighter">password: 123123</p>
       </div>
     </div>
 

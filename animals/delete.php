@@ -8,7 +8,7 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
   $result = mysqli_query($conn, $sql);
 
   $row = mysqli_fetch_assoc($result);
-  if ($row["picture"] !== "product.png") {
+  if ($row["picture"] !== "animal.png") {
     unlink("../pictures/$row[picture]");
   }
 

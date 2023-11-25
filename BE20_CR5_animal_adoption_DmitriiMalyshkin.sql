@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 25, 2023 at 05:13 PM
+-- Generation Time: Nov 25, 2023 at 05:43 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,7 +32,7 @@ USE `BE20_CR5_animal_adoption_DmitriiMalyshkin`;
 CREATE TABLE `animals` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `age` decimal(13,2) NOT NULL,
+  `age` int(11) NOT NULL,
   `size` varchar(255) NOT NULL,
   `breed` varchar(255) NOT NULL,
   `vaccinated` varchar(255) NOT NULL,
@@ -47,17 +47,17 @@ CREATE TABLE `animals` (
 --
 
 INSERT INTO `animals` (`id`, `name`, `age`, `size`, `breed`, `vaccinated`, `location`, `status`, `picture`, `description`) VALUES
-(1, 'Buddy', 3.00, 'large', 'Labrador Retriever', 'no', 'ExampleLocation', 'Adopted', '6561314656902.jpg', NULL),
-(2, 'Charlie', 10.00, 'small', 'Beagle', 'yes', 'Park Zoo', 'Adopted', 'animal.png', NULL),
-(3, 'Luna', 1.00, 'small', 'Poodle', 'Yes', 'City Shelter', 'Adopted', 'animal.png', NULL),
-(4, 'Max', 4.00, 'large', 'Golden Retriever', 'yes', 'Country Farm', 'Adopted', '656134bbe0c8c.jpg', NULL),
-(5, 'Misty', 8.00, 'Medium', 'Siamese', 'Yes', 'City Humane Society', 'Adopted', 'animal.png', NULL),
-(6, 'Rocky', 9.00, 'Large', 'German Shepherd', 'no', 'Suburban Shelter', 'Adopted', 'animal.png', NULL),
-(7, 'Coco', 3.00, 'Small', 'Chihuahua', 'Yes', 'Urban Pet Store', 'Adopted', 'animal.png', NULL),
-(8, 'Simba', 2.00, 'Medium', 'Bengal', 'Yes', 'Safari Rescue', 'Adopted', 'animal.png', NULL),
-(9, 'Daisy', 1.00, 'Small', 'Dachshund', 'Yes', 'Local Pet Shop', 'Available', 'animal.png', NULL),
-(10, 'Thor', 8.00, 'Large', 'Siberian Husky', 'Yes', 'Arctic Rescue', 'Available', 'animal.png', NULL),
-(25, 'Zoe', 2.00, 'medium', 'Maine Coon', 'yes', 'Countryside Shelter', 'Adopted', 'animal.png', NULL);
+(1, 'Buddy', 3, 'large', 'Labrador Retriever', 'no', 'ExampleLocation', 'Adopted', '6562221991526.jpg', 'Buddy is a friendly Labrador Retriever. He loves to play fetch and enjoys long walks in the park.'),
+(2, 'Charlie', 10, 'small', 'Beagle', 'yes', 'Park Zoo', 'Adopted', '6562224b4737c.jpg', 'Charlie, the Beagle, is a curious and energetic companion. He\'s great with kids and loves exploring the outdoors.'),
+(3, 'Luna', 1, 'small', 'Poodle', 'yes', 'City Shelter', 'Available', '6562226f5a0b4.jpg', 'Meet Luna, the adorable Poodle. Shes a playful and affectionate pup looking for a loving home to call her own.'),
+(4, 'Max', 4, 'large', 'Golden Retriever', 'yes', 'Country Farm', 'Adopted', '65622297e6e3b.jpg', 'Max, the Golden Retriever, is a loyal and gentle friend. He enjoys spending time outdoors and is great with kids.'),
+(5, 'Misty', 8, 'small', 'Siamese', 'yes', 'City Humane Society', 'Adopted', '656222c6e2c90.jpg', 'Misty is a graceful Siamese cat with striking blue eyes. She loves to curl up in cozy spots and enjoys gentle petting.'),
+(6, 'Rocky', 9, 'small', 'German Shepherd', 'no', 'Suburban Shelter', 'Adopted', '656222ea234f1.jpg', 'Rocky, the German Shepherd, is a smart and protective companion. He\'s well-trained and ready to join an active and caring family.'),
+(7, 'Coco', 3, 'small', 'Chihuahua', 'yes', 'Urban Pet Store', 'Available', '656223121ade9.jpg', 'Coco is a tiny bundle of energy. Despite her small size, shes full of spunk and loves being the center of attention.'),
+(8, 'Simba', 2, 'small', 'Bengal', 'yes', 'Safari Rescue', 'Available', '6562234d727e8.jpg', 'Simba, the Bengal, is a playful and adventurous cat. His stunning coat and lively personality make him a delightful addition to any home.'),
+(9, 'Daisy', 1, 'small', 'Dachshund', 'yes', 'Local Pet Shop', 'Available', '65622374a63c0.jpg', 'Daisy is a sweet and affectionate Dachshund pup. She\'s looking for a loving family to shower her with attention and playtime.'),
+(10, 'Thor', 8, 'small', 'Siberian Husky', 'yes', 'Arctic Rescue', 'Available', '656223a3715c5.jpg', 'Thor, the Siberian Husky, is a majestic and energetic dog. He enjoys outdoor activities and would thrive in an active and loving home.'),
+(25, 'Zoe', 2, 'medium', 'Maine Coon', 'yes', 'Countryside Shelter', 'Available', '656223e02e13a.jpg', 'Zoe, the Maine Coon, is a gentle and affectionate cat with a luxurious coat. She loves lounging in sunny spots and being pampered by her human companions.');
 
 -- --------------------------------------------------------
 

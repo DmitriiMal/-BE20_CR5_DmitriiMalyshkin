@@ -43,9 +43,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <p><strong>Vaccinated: </strong><?= $row['vaccinated'] ?></p>
         <p><strong>Location: </strong><?= $row['location'] ?></p>
         <p><strong>Status: </strong><?= $row['status'] ?></p>
+        <!-- <a href='#' class='btn btn-outline-dark <?= $row['status'] == "Adopted" ? "disabled" : "" ?>'>Take me home</a> -->
       </div>
     </div>
-    <a href='#' class='btn btn-outline-dark <?= $row['status'] == "Adopted" ? "disabled" : "" ?>'>Take me home</a>
+    <p><strong>Description:</strong></p>
+    <p><?= $row['description'] ?></p>
 
 
   </div>

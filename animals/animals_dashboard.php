@@ -27,16 +27,14 @@ if (mysqli_num_rows($result) > 0) {
     <td>$row[vaccinated]</td>
     <td>$row[location]</td>
     <td>$row[status]</td>
-    <td class=''>
-
-        <div class='d-flex flex-nowrap'>
-          <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
-            <a href='details.php?id=$row[id]' class='btn btn-dark'>Details</a>
-            <a href='update.php?id=$row[id]' class='btn btn-outline-dark'>Edit</a>
-          </div>
-          <a href='delete.php?id=$row[id]' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
-        </div>
-
+    <td>
+    <div class='d-flex flex-nowrap'>
+    <div class='btn-group btn-group-sm me-4 my-1' role='group' aria-label='Basic mixed styles example'>
+    <a href='details.php?id=$row[id]' class='btn btn-dark'>Details</a>
+    <a href='update.php?id=$row[id]' class='btn btn-outline-dark'>Edit</a>
+    </div>
+    <a href='delete.php?id=$row[id]' class='btn btn-sm btn-outline-danger my-1'>Delete</a>
+    </div>
     </td>
   </tr>
     ";

@@ -20,8 +20,9 @@ if (isset($_POST['add'])) {
   $location = $_POST['location'];
   $status = $_POST['status'];
   $picture = fileUpload($_FILES['picture'], 'animal');
+  $description = $_POST['description'];
 
-  $sql = "INSERT INTO `animals`(`name`, `age`, `size`, `breed`, `vaccinated`, `location`, `status`, `picture`) VALUES ('$name', $age,'$size','$breed','$vaccinated','$location','$status','$picture[0]')";
+  $sql = "INSERT INTO `animals`(`name`, `age`, `size`, `breed`, `vaccinated`, `location`, `status`, `picture`, `description`) VALUES ('$name', $age,'$size','$breed','$vaccinated','$location','$status','$picture[0]', '$description')";
   if (mysqli_query($conn, $sql)) {
     echo "
             <div class='alert alert-success mt-5' role='alert'>
@@ -108,6 +109,11 @@ if (isset($_POST['add'])) {
       <div class="form-floating mb-3">
         <input type="file" class="form-control" id="picture" name="picture" placeholder="picture">
         <label for="picture">Picture</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea class="form-control" name="description" placeholder="Description" id="description"></textarea>
+        <label for="description">Description</label>
       </div>
       <button type="add" name="add" class="btn btn-dark px-5">Add</button>
     </form>

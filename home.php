@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require_once "components/db_connect.php";
 require_once "components/navbar.php";
 
@@ -24,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
             <div class='btn-group btn-group-sm' role='group' aria-label='Basic mixed styles example'>
               <a href='animals/details.php?id=$row[id]' class='btn btn-dark'>Details</a>
               <a href='#' class='btn btn-outline-dark ";
-    if ($row["status"] == "Adopted") {
+    if ($row["status"] == "Adopted" || !isset($_SESSION["user"])) {
       $cards .= "disabled";
     };
     $cards .= "'>Take me home</a>

@@ -1,6 +1,12 @@
 <?php
-require_once "../components/db_connect.php";
 
+session_start();
+
+if (!isset($_SESSION["adm"])) {
+  header("Location: ../home.php");
+}
+
+require_once "../components/db_connect.php";
 
 if (isset($_GET["id"]) && !empty($_GET["id"])) {
   $id = $_GET["id"];

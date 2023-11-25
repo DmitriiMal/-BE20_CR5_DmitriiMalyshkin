@@ -1,4 +1,15 @@
 <?php
+
+session_start();
+
+if (isset($_SESSION["user"])) {
+  header("Location: ../home.php");
+} elseif (isset($_SESSION["adm"])) {
+  header("Location: ../animals/animals_dashboard.php");
+}
+
+
+
 require_once "../components/db_connect.php";
 require_once "../components/file_upload.php";
 require_once "../components/navbar.php";
@@ -21,7 +32,6 @@ if (isset($_POST['register']) && !empty($_POST['register'])) {
   $address = clean($_POST['address']);
   $pass = $_POST['pass'];
   $passConfirm = $_POST['passConfirm'];
-  $picture = fileUpload($_FILES['picture']);
 
   if (empty($first_name)) {
     $error = true;
@@ -98,19 +108,20 @@ if (isset($_POST['register']) && !empty($_POST['register'])) {
 
   if (!$error) {
     $pass = hash("sha256", $pass);
+    $picture = fileUpload($_FILES['picture']);
     $sql = "INSERT INTO `users`(`first_name`, `last_name`, `email`, `phone_number`, `address`, `pass`, `picture`) VALUES ('$first_name','$last_name','$email',$phone_number,'$address','$pass','$picture[0]')";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
       echo "
-            <div class='alert alert-success mt-5' role='alert'>
-                New account has been created! <i class='fa-solid fa-kiwi-bird'></i>
-            </div>";
+      <div class='alert alert-success mt-5' role='alert'>
+      New account has been created! <i class='fa-solid fa-kiwi-bird'></i>
+      </div>";
     } else {
       echo "
-            <div class='alert alert-danger mt-5' role='alert'>
-                Something went wrong! <i class='fa-solid fa-bugs'></i>
-            </div>";
+      <div class='alert alert-danger mt-5' role='alert'>
+      Something went wrong! <i class='fa-solid fa-bugs'></i>
+      </div>";
     }
   }
 }

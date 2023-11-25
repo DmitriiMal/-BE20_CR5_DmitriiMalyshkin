@@ -1,6 +1,10 @@
 
 
 <?php
+session_start();
+
+
+
 $navbar = "
 <nav class='navbar navbar-expand-sm bg-body-tertiary fixed-top shadow opacity-100' style='height: 4rem;'>
   <div class='container-fluid'>
@@ -24,6 +28,9 @@ $navbar = "
         </li>
         <li class='nav-item'>
         <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/user/register.php'>Register</a>
+        </li>
+        <li class='nav-item'>
+        <a class='nav-link' href='/BE20_CR5_DmitriiMalyshkin/index.php'>My account</a>
         </li>
         </ul>
         

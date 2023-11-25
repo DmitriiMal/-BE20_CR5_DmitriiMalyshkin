@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+
+if (isset($_SESSION["user"])) {
+  header("Location: ../home.php");
+} elseif (isset($_SESSION["adm"])) {
+  header("Location: ../animals/animals_dashboard.php");
+}
+
+
 require_once "../components/db_connect.php";
 require_once "../components/navbar.php";
 require_once "../components/clean.php";
@@ -34,7 +44,7 @@ if (isset($_POST["login"])) {
       $row = mysqli_fetch_assoc($result);
       if ($row["status"] === "user") {
         $_SESSION["user"] = $row["id"];
-        header("Location: ../home.php");
+        header("Location: ../index.php");
       } elseif ($row["status"] === "adm") {
         $_SESSION["adm"] = $row["id"];
         header("Location: ../animals/animals_dashboard.php");

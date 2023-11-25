@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION["adm"])) {
+  header("Location: ../home.php");
+}
+
+
 require_once "../components/db_connect.php";
 require_once "../components/file_upload.php";
 require_once "../components/navbar.php";
